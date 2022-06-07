@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="66e66116-2dfb-4ae6-9799-65bcdc8993d5" name="studentListManaging" url="jdbc:mysql://localhost/studentdb?useSSL=false&amp;allowMultiQueries=true&amp;serverTimezone=UTC" driverClass="com.mysql.cj.jdbc.Driver" />
+    </data-sources>
+    <data-source-infos>
+      <data-source-info id="66e66116-2dfb-4ae6-9799-65bcdc8993d5" persistence-unit-name="student_pers_unit" />
+    </data-source-infos>
+  </component>
+</project>
