@@ -1,20 +1,17 @@
 package com.example.studentlistmanaging.model;
 
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.time.LocalDate;
 
 
 @Entity
+@Table(name = "student")
 public class Student {
 
     @Id
-    @GeneratedValue
     private String matricule;
 
     @Column(nullable = false)

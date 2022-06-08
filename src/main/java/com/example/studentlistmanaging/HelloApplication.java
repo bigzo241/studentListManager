@@ -1,5 +1,6 @@
 package com.example.studentlistmanaging;
 
+import com.example.studentlistmanaging.repository.StudentRepository;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,12 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        StudentRepository.getEm().close();
+        StudentRepository.getEmf().close();
     }
 
     public static void main(String[] args) {

@@ -6,12 +6,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class HelloController {
     @FXML
     private Label welcomeText;
 
-    private final StudentRepository repository = new StudentRepository();
+    private final StudentRepository repository = StudentRepository.getInstance();
 
     @FXML
     protected void onHelloButtonClick() {
@@ -32,5 +33,28 @@ public class HelloController {
         repository.save(student);
 
         welcomeText.setText("Welcome to JavaFX Application!");
+    }
+
+    @FXML
+    protected void showAllStudents() {
+        List<Student> studentList = repository.findAll();
+        System.out.println("********************************");
+        System.out.println("* Matricule | Nom     | Prenom *");
+        System.out.println("********************************");
+        for ( Student student : studentList ) {
+            System.out.println("* " + student.getMatricule() + " | " + student.getNom() + " | " + student.getPrenom() + " *");
+        }
+        System.out.println("********************************");
+    }
+
+    @FXML
+    protected void showOneStudent() {
+        Student student = repository.findByMatricule("1234A");
+        System.out.println("********************************");
+        System.out.println("* Matricule | Nom     | Prenom *");
+        System.out.println("********************************");
+        System.out.println("* " + student.getMatricule() + " | " + student.getNom() + " | " + student.getPrenom() + " *");
+        System.out.println("********************************");
+
     }
 }

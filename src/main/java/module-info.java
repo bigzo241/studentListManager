@@ -7,11 +7,15 @@ module com.example.studentlistmanaging {
     requires validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    requires java.persistence;
     requires jakarta.validation;
+    requires mysql.connector.java;
+    requires jakarta.persistence;
+    requires org.hibernate.orm.core;
 
     opens com.example.studentlistmanaging to javafx.fxml;
     exports com.example.studentlistmanaging;
     exports com.example.studentlistmanaging.controller;
+    exports com.example.studentlistmanaging.model;
     opens com.example.studentlistmanaging.controller to javafx.fxml;
+    opens com.example.studentlistmanaging.model;
 }

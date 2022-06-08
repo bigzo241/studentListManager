@@ -13,4 +13,6 @@
 
     <Label fx:id="welcomeText"/>
     <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Button text="Show all students" onAction="#showAllStudents"/>
+    <Button text="Show one student" onAction="#showOneStudent"/>
 </VBox>
