@@ -23,8 +23,10 @@ public class StudentRepository {
 
 
     public void save(Student student) {
-        em.persist(student);
-        StudentRepository.transac.commit();
+        if (student != null){
+            em.persist(student);
+            StudentRepository.transac.commit();
+        }
     }
 
     public List<Student> findAll() {
@@ -42,7 +44,7 @@ public class StudentRepository {
             em.remove(student);
     }
 
-    public void updateStudent(Student student) {
+    public void updateStudent(Student student, String newMatricule) {
         Student oldStudent = findByMatricule(student.getMatricule());
         if (oldStudent != null) {
             oldStudent.setNom(student.getNom());
@@ -53,6 +55,9 @@ public class StudentRepository {
             oldStudent.setTel(student.getTel());
             oldStudent.setEmail(student.getEmail());
             oldStudent.setPhoto(student.getPhoto());
+
+            if (!newMatricule.isEmpty())
+                oldStudent.setMatricule(newMatricule);
 
             em.flush();
             transac.commit();

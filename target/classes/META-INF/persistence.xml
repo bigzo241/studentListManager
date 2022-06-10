@@ -19,7 +19,7 @@
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
 <!--            <property name="hibernate.hbm2ddl.auto" value="validate" />-->
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
 
             <!-- configuring connection pool -->
             <property name="hibernate.c3p0.min_size" value="5" />

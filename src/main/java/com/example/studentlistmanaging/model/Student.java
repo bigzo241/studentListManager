@@ -19,13 +19,17 @@ public class Student {
     @Column(nullable = false)
     private String prenom;
 
+    @Column(nullable = false)
     private LocalDate date_naissance;
+    @Column(nullable = false)
     private String lieu_naissance;
     private String nationalite;
-
     @Email
+    @Column(nullable = false, unique = true)
     private String email;
+    @Column(nullable = false, unique = true)
     private String tel;
+    @Column(nullable = false)
     private String photo;
 
     public Student(String matricule, String nom, String prenom, LocalDate date_naissance, String lieu_naissance, String nationalite, String email, String tel, String photo) {
