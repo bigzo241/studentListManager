@@ -1,0 +1,35 @@
+.container {
+    -fx-background-color : white;
+    -fx-background-radius: 7;
+    -fx-border-color: #D7D7D7;
+    -fx-border-width: 2;
+    -fx-border-radius : 7;
+    -fx-effect: dropshadow(gaussian, #AAAAAA, 7, 0.2, 0, 0);
+}
+
+.container:hover {
+    -fx-border-width: 3;
+    -fx-border-color : deepskyblue;
+}
+
+.student_img {
+    -fx-border-radius: 7;
+    -fx-border-color: #D7D7D7;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, #AAAAAA, 7, 0.2, 0, 0);
+}
+
+.studentProperty {
+    -fx-background-color: #F2F2F2;
+    -fx-background-radius: 7;
+    -fx-text-fill: #7F7F7F;
+    -fx-font-size: 17px;
+    -fx-font-family: "Open Sans";
+
+    -fx-border-radius : 7;
+
+    -fx-padding : 2 10 2 10;
+
+    -fx-effect: dropshadow(gaussian, #AAAAAA, 7, 0.2, 0, 0);
+}
+
