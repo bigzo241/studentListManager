@@ -1,0 +1,18 @@
+.root {
+    -fx-background-radius: 7;
+    -fx-border-radius : 7;
+}
+
+.label{
+    -fx-font-family: "segoe ui";
+    -fx-font-size: 20px;
+}
+
+.button{
+    -fx-font-family: "segoe ui";
+    -fx-font-size: 15px;
+}
+
+.text-field, #img_path{
+    -fx-font-size: 15px;
+}

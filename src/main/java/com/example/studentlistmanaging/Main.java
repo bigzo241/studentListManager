@@ -7,6 +7,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 
@@ -18,6 +19,7 @@ public class Main extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main_view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.setTitle("Hello!");
         stage.setWidth(primaryScreenVisualBounds.getWidth());
         stage.setHeight(primaryScreenVisualBounds.getHeight());

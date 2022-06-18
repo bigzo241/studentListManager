@@ -1,17 +1,30 @@
 package com.example.studentlistmanaging.controller;
 
+import com.example.studentlistmanaging.Main;
 import com.example.studentlistmanaging.model.Student;
 import com.example.studentlistmanaging.repository.StudentRepository;
+import com.example.studentlistmanaging.util.StageFactory;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,11 +37,21 @@ public class MainController {
 
     private final StudentRepository repository = StudentRepository.getInstance();
 
-
     public MainController() {}
 
     @FXML
     public void initialize() {
+        Button btnAjouter = new Button("Ajouter");
+        btnAjouter.getStyleClass().addAll("btn", "btn-primary");
+        btnAjouter.setOnAction((e) -> {
+            try {
+                onAjouterBtnClick();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        header.getChildren().add(btnAjouter);
+
         List<Student> studentList = repository.findAll();
         for ( Student student: studentList ) {
             Image image = new Image(this.getClass().getResource("/img/img1.png").toString(), 188, 225, false, true);
@@ -70,7 +93,6 @@ public class MainController {
     protected void onHelloButtonClick() {
         LocalDate date = LocalDate.of(1998, 8, 17);
 
-
         Student student = new Student();
         student.setMatricule("1234A");
         student.setNom("ZO");
@@ -84,6 +106,25 @@ public class MainController {
 
         repository.save(student);
 
-//        welcomeText.setText("Welcome to JavaFX Application!");
+    }
+
+    protected void onAjouterBtnClick() throws IOException {
+        Parent root = header.getScene().getRoot();
+
+        StageFactory stageFactory = StageFactory.getInstance();
+        Stage registerFormStage = stageFactory.createStage(header.getScene().getWindow(), StageStyle.UNDECORATED, Modality.APPLICATION_MODAL);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("registerForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        registerFormStage.setScene(scene);
+
+        appyBlurEffect(5.0, 5.0, 2, root);
+
+        registerFormStage.show();
+    }
+
+    protected void appyBlurEffect(double width, double height, int iteration, Node node) {
+        BoxBlur boxBlur = new BoxBlur(width, height, iteration);
+        node.setEffect(boxBlur);
     }
 }
